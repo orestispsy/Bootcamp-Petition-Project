@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    font-family: fantasy;
+    font-size: 150%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    width: 300px;
+    height: 150px;
+    background-color:chartreuse;
+}
+
+.inputsCont {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around
+}
+
+input {
+    width: 120px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    width:100px;
+    align-self: center;
+}
