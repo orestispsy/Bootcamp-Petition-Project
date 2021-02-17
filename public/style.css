@@ -38,3 +38,12 @@ button {
     width:100px;
     align-self: center;
 }
+
+.signers {
+    color:white;
+}
+
+.signersLink {
+    text-decoration: none;
+    color:chartreuse;
+}
