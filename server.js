@@ -26,15 +26,21 @@ app.get("/", (req, res) => {
 
 
 app.get("/thanks", (req, res) => {
-    db.getAllSignatures()
-        .then(({ rows }) => {
-        console.log("rows:", rows)
         res.render("thanks", {
             layout: "main",
-            rows
-        });
         })
-        .catch((err) => console.log(err));
+});
+
+app.get("/signers", (req, res) => {
+        db.getAllSignatures()
+            .then(({ rows }) => {
+                console.log("rows:", rows);
+                res.render("signers", {
+                    layout: "main",
+                    rows,
+                });
+            })
+            .catch((err) => console.log(err));
 });
 
 
