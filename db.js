@@ -10,13 +10,13 @@ module.exports.getAllSignatures = () => {
     return db.query(q);
 };
 
-module.exports.addSignatures= (firstname, lastname, signature) => {
+module.exports.addSignatures= (signature) => {
     const q = `
-        INSERT INTO signatures (firstname, lastname, signature)
-        VALUES ($1, $2, $3)
+        INSERT INTO signatures (signature)
+        VALUES ($1)
         RETURNING id
     `;
-    const params = [firstname, lastname, signature];
+    const params = [signature];
     console.log("q: ", q);
     return db.query(q, params);
 };
@@ -27,4 +27,38 @@ module.exports.getSignatureId = (id) => {
     `;
     const params = [id];
     return db.query(q, params);
+};
+
+module.exports.addRegistration = (firstname, lastname, email, password_hash) => {
+    const q = `
+        INSERT INTO users (firstname, lastname, email, password_hash)
+        VALUES ($1, $2, $3, $4)
+        RETURNING id
+    `;
+    const params = [firstname, lastname, email, password_hash];
+    return db.query(q, params);
+};
+
+module.exports.addRegistration = (
+    firstname,
+    lastname,
+    email,
+    password_hash
+) => {
+    const q = `
+        INSERT INTO users (firstname, lastname, email, password_hash)
+        VALUES ($1, $2, $3, $4)
+        RETURNING id
+    `;
+    const params = [firstname, lastname, email, password_hash];
+    return db.query(q, params);
+};
+
+module.exports.getPasswordHashed = (email) => {
+    const q = `
+        SELECT password_hash
+        FROM users WHERE email = $1
+    `;
+   const params = [email];
+   return db.query(q, params);
 };
