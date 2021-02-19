@@ -1,0 +1,10 @@
+<form class="formLogin" method='POST'>
+    <div class="inputsInForms">
+            <input type='text' name='email' placeholder='Email Address' autocomplete='off'>
+            <input type='password' name='password' placeholder='Password' autocomplete='off'>
+    </div>
+            <button> Submit </button>
+        </form>
+        {{#if error}}
+        <p class="formError">{{errorMessage}}</p>
+        {{/if}}
