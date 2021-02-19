@@ -74,15 +74,6 @@ app.post("/register", (req, res) => {
                })
                .catch((err) => console.log(err));
         });
-        // console.log("req.body: ", req.body);
-        // db.addSignatures(`${req.body.signature}`)
-        //     .then(({ rows }) => {
-        //         req.session.signatureId = rows[0].id;
-        //         console.log("ID IS:", req.session.signatureId);
-        //         res.redirect("/thanks");
-        //         console.log("rows: ", rows);
-        //     })
-        //     .catch((err) => console.log(err));
     } else {
         res.render("registration", {
             layout: "main",
