@@ -68,15 +68,15 @@ app.get("/login", (req, res) => {
         layout: "main",
     });
 });
-
+/////////set the cookie for the user-id
 app.post("/login", (req, res) => {
     if (req.body.email && req.body.password) {
-        db.getPasswordHashed(req.body.email)
+        db.getPasswordHashed(req.body.email)/////////extend query to get the userid
             .then(({ rows }) => {
                 compare(req.body.password, rows[0].password_hash)
                     .then((match) => {
-                        if (match) {
-                            res.redirect("/petition");
+                        if (match) {//////////redirect if yes to welcome if no to petition
+                            res.redirect("/petition");//////// ///////set cookie with the user id////////////db query if the user has signed the petition and if yes set the correct
                         } else {
                             res.render("login", {
                                 layout: "main",
