@@ -1,6 +1,7 @@
 const spicedPg = require("spiced-pg");
 
-const db = spicedPg("postgres:postgres:postgres@localhost:5432/signatures");
+
+const db = spicedPg(process.env.DATABASE_URL || "postgres:postgres:postgres@localhost:5432/signatures");
 
 module.exports.getAllSigners = () => {
     const q = `
@@ -39,11 +40,11 @@ module.exports.addSignatures = (user_id, signature) => {
     return db.query(q, params);
 };
 
-module.exports.getSignature = (user_id) => {
+module.exports.getSignature = (id) => {
     const q = `
-        SELECT signature FROM signatures WHERE user_id = $1;
+        SELECT signature FROM signatures WHERE id = $1;
     `;
-    const params = [user_id];
+    const params = [id];
     return db.query(q, params);
 };
 

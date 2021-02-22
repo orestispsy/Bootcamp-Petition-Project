@@ -106,16 +106,20 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/profile", (req, res) => {
-    db.addUserProfile(
-        req.body.age,
-        req.body.city,
-        req.body.homepage,
-        req.session.user_id
-    )
-        .then(({ rows }) => {
-            res.redirect("/petition");
-        })
-        .catch((err) => console.log(err));
+    console.log("AGE IS", req.body.age);
+    if (req.body.age == "") {
+        req.body.age = null
+    }
+        db.addUserProfile(
+            req.body.age,
+            req.body.city,
+            req.body.homepage,
+            req.session.user_id
+        )
+            .then(({ rows }) => {
+                res.redirect("/petition");
+            })
+            .catch((err) => console.log(err));
 });
 
 app.get("/petition", (req, res) => {
@@ -134,6 +138,7 @@ app.post("/petition", (req, res) => {
             .then(({ rows }) => {
                 req.session.signatureId = rows[0].id;
                 console.log("Petition SIGNATURE id IS", req.session.signatureId);
+                console.log("PETITION ROWS", rows)
                 res.redirect("/thanks");
             })
             .catch((err) => console.log(err));
@@ -186,6 +191,6 @@ app.get("/signers/:city", (req, res) => {
         .catch((err) => console.log(err));
 });
 
-const server = app.listen(8080, () =>
+const server = app.listen(process.env.PORT || 8080, () =>
     console.log(`🟢 Listening Port ${server.address().port} ... ~ Petition ~`)
 );
