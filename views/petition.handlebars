@@ -1,10 +1,22 @@
-<form class="formPetition" method='POST'>
-    <div class="inputsInForms">
-            <input id="hiddenInput" type='hidden' name='signature' placeholder='Signature' autocomplete='off'>
-    </div>
-            <canvas class="canvas" style="width:500px;height:80px;background-color:yellow"></canvas><script src="canvas.js"></script>
-            <button> Submit </button>
-        </form>
-        {{#if error}}
-        <p class="formError">{{errorMessage}}</p>
-        {{/if}}
+<div class="contPet">
+    <a href="https://www.spiced-academy.com/" target="_blank"><img src="/Spiced.png" alt=""></a>
+    <h1>Spicedlings EDITION</h1>
+</div>
+
+<div class="contPetDesc">
+        <P>In such a world we live in, stressful additions are <a href="https://en.wikipedia.org/wiki/HTTP_404" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='yellow'" style="color: yellow;text-decoration:line-through" target="_blank">forbidden</a>! However we little humans, have that intention to go for big things. And we really do,
+        and do it for good ! And it's worth it. But still remains a <span id="pain">pain in the ass</span>. 
+        <span>SIGN</span> the petition to support all your fellow Spicedlings, who strive through their 3-month coding <a href="https://en.wikipedia.org/wiki/Coding_bootcamp" target="_blank">bootcamp</a>. 
+        Your signature will be like a treatment, as the cooling breeze of the early morning wind, on an early Summer day... </p>
+</div>
+ {{#if error}}
+    <p class="formError">{{errorMessage}}</p>
+    {{/if}}
+<div class="formBack">
+<form method='POST'>
+    <input id="hiddenInput" type='hidden' name='signature' placeholder='Signature' autocomplete='off'>
+    <canvas class="canvas" style="width:300px;height:150px;"></canvas><script src="canvas.js"></script>
+    <button> Sign </button>
+</form>
+</div>
+
