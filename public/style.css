@@ -8,52 +8,203 @@ body {
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: black;
+    color:white;
     font-family: fantasy;
     font-size: 150%;
+}
+.container1 {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contPet {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self:flex-start;
+}
+
+.contPetDesc {  
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.contProfileDesc {  
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+.cont2Prof{
+    height:800px;
 }
 
 form {
     display: flex;
-    flex-direction: column;
-    justify-content:center;
-    width: 500px;
-    height: 120px;
-    background-color:red;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
 }
 
-.inputsInForms {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    margin-bottom: 10px;
+.formBack {
+    width:500px;
+    height:500px;
+    background-color:red;
+    background-image: url("paint.jpg");
+    background-size: cover;
 }
 
 input {
-    width: 120px;
+    width: 150px;
 }
 
 button {
     margin-top: 10px;
-    background-color: black;
+    font-family: fantasy;
+    font-size: 20px;
+    letter-spacing: 2px;
+    background-color: white;
+    color: crimson;
+    width:90px;
+    height:90px;
+    border-radius: 50%;
+    border-color: black;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color:cyan;
     color: white;
-    width:100px;
-    align-self: center;
-     
+    
+}
+
+canvas {
+    margin-top:100px;
+    margin-bottom:20px;
+    cursor: pointer;
+    background-color: black;
+    border-radius: 5%;
+    border: 3px solid;
 }
 
 .signers {
     color:white;
 }
 
-.signersLink {
-    text-decoration: none;
-    color:chartreuse;
-}
-
 .formError {
     align-self: center;
     color: yellow;
     font-family: monospace;
+}
+
+.container1 h1 {
+ color:white;
+ font-size: 70px;
+ margin: 0;
+ font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ font-style: italic;
+ font-weight: 100;
+}
+
+
+.container1 p {
+ font-size: 40px;
+ margin-top:30px;
+ margin-bottom:30px;
+ color: white;
+ letter-spacing: 10px;
+ font-weight: 900;
+ text-shadow: -1px 1px 10px purple, 1px -1px 10px purple, 1px 1px 10px purple,
+        -1px -1px 10px purple;
+}
+
+.contPet img {
+    width:500px;
+    height:100px;
+}
+
+.contPet h1 {
+color:white;
+ font-size: 40px;
+ font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ font-style: italic;
+ font-weight: 100;
+ margin: 0;
+}
+
+.contPetDesc p {
+    font-family: monospace;
+    font-size: 30px;
+    margin: 0;
+    color: white;
+    width: 800px;
+    text-align:justify;
+}
+
+.contPetDesc a {
+ 
+ color:lime;
+ text-decoration: none;
+}
+
+.contPetDesc a:hover {
+ color:cyan;
+}
+
+.contPetDesc span {
+    color:crimson;
+    letter-spacing: 1px;
+    text-decoration: underline;
+}
+
+.contProfileDesc p {  
+    font-family: monospace;
+    font-size: 30px;
+    margin: 0;
+    color: white;
+    width: 500px;
+    text-align:justify
+}
+
+form p {
+    margin:5px;
+    text-align: center;
+    color: crimson;
+    letter-spacing: 5px;
+}
+
+#pain {
+    text-decoration: none;
+    color:white;
+}
+
+#pain:hover {
+    text-shadow: -2px 2px 0 crimson, 2px -2px 0 crimson, 2px 2px 0 crimson,
+        -2px -2px 0 crimson;
+    transition:5s;
+}
+
+.signersLink {
+    text-decoration: none;
+    color:chartreuse
+}
+
+footer {
+    position: fixed;
+    left:0;
+    bottom:0;
+    font-family: monospace;
+    font-size: small
 }
 

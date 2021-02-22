@@ -1,10 +1,22 @@
-<form class="formLogin" method='POST'>
-    <div class="inputsInForms">
-            <input type='text' name='email' placeholder='Email Address' autocomplete='off'>
-            <input type='password' name='password' placeholder='Password' autocomplete='off'>
-    </div>
-            <button> Submit </button>
-        </form>
+<div class="container1">
+        <a href="https://www.spiced-academy.com/" target="_blank"><img src="/Spiced.png" alt=""></a>
+        <h1>Spicedlings EDITION</h1>
+        <P>Welcome Back</P>
+</div>
+
+
+
+<form method='POST'>
+        <input type='text' name='email' placeholder='Email Address' autocomplete='off'>
+        <p>EMAIL</p>
+        <input type='password' name='password' placeholder='Password' autocomplete='off'>
+        <p>PASSWORD</p>
+        <button> Submit </button>
+
         {{#if error}}
         <p class="formError">{{errorMessage}}</p>
         {{/if}}
+
+</form>
+
+<div style="font-size:20px;font-family:monospace;margin-top:10px;"><p>Not a Registered User?</p> <p style="text-align: center;margin:0;">Click <a href="http://localhost:8080/register">here</a></p></div>

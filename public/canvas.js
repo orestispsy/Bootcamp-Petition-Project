@@ -19,8 +19,8 @@ canvas.addEventListener("mousemove", (e) => {
         console.log("offsetX", e.offsetX);
         console.log("offsetY", e.offsetY);
         ctx.beginPath();
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = "crimson";
+        ctx.lineWidth = 3;
         ctx.moveTo(x, y);
         ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();

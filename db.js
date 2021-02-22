@@ -2,49 +2,52 @@ const spicedPg = require("spiced-pg");
 
 const db = spicedPg("postgres:postgres:postgres@localhost:5432/signatures");
 
-module.exports.getAllSignatures = () => {
+module.exports.getAllSigners = () => {
     const q = `
-        SELECT *
-        FROM signatures
+         SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage 
+    FROM users
+    JOIN signatures
+    ON users.id = signatures.user_id
+    LEFT JOIN user_profiles
+    ON users.id = user_profiles.user_id
     `;
     return db.query(q);
 };
 
-module.exports.addSignatures= (signature) => {
+module.exports.getAllSignersByCity = (city) => {
     const q = `
-        INSERT INTO signatures (signature)
-        VALUES ($1)
-        RETURNING id
+         SELECT users.firstname, users.lastname, user_profiles.age, user_profiles.city, user_profiles.homepage 
+    FROM users
+    JOIN signatures
+    ON users.id = signatures.user_id
+    LEFT JOIN user_profiles
+    ON users.id = user_profiles.user_id
+    WHERE LOWER(user_profiles.city) = LOWER($1)
     `;
-    const params = [signature];
+    const params = [city];
+    return db.query(q, params);
+};
+
+module.exports.addSignatures = (user_id, signature) => {
+    const q = `
+        INSERT INTO signatures (user_id, signature)
+        VALUES ($1, $2)
+        RETURNING id, user_id, signature
+    `;
+    const params = [user_id, signature];
     console.log("q: ", q);
     return db.query(q, params);
 };
 
-module.exports.getSignatureId = (id) => {
+module.exports.getSignature = (user_id) => {
     const q = `
-        SELECT signature FROM signatures WHERE id = $1;
+        SELECT signature FROM signatures WHERE user_id = $1;
     `;
-    const params = [id];
+    const params = [user_id];
     return db.query(q, params);
 };
 
 module.exports.addRegistration = (firstname, lastname, email, password_hash) => {
-    const q = `
-        INSERT INTO users (firstname, lastname, email, password_hash)
-        VALUES ($1, $2, $3, $4)
-        RETURNING id
-    `;
-    const params = [firstname, lastname, email, password_hash];
-    return db.query(q, params);
-};
-
-module.exports.addRegistration = (
-    firstname,
-    lastname,
-    email,
-    password_hash
-) => {
     const q = `
         INSERT INTO users (firstname, lastname, email, password_hash)
         VALUES ($1, $2, $3, $4)
@@ -61,4 +64,19 @@ module.exports.getPasswordHashed = (email) => {
     `;
    const params = [email];
    return db.query(q, params);
+};
+
+module.exports.addUserProfile = (
+    age,
+    city,
+    homepage,
+    user_id
+) => {
+    const q = `
+        INSERT INTO user_profiles (age, city, homepage, user_id)
+        VALUES ($1, $2, $3, $4)
+        RETURNING id
+    `;
+    const params = [age, city, homepage, user_id];
+    return db.query(q, params);
 };
