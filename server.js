@@ -68,26 +68,48 @@ app.get("/login", (req, res) => {
         layout: "main",
     });
 });
-/////////set the cookie for the user-id
+
 app.post("/login", (req, res) => {
     if (req.body.email && req.body.password) {
-        db.getPasswordHashed(req.body.email)/////////extend query to get the userid
+        db.getPasswordHashed(req.body.email)
             .then(({ rows }) => {
-                compare(req.body.password, rows[0].password_hash)
-                    .then((match) => {
-                        if (match) {//////////redirect if yes to welcome if no to petition
-                            res.redirect("/petition");//////// ///////set cookie with the user id////////////db query if the user has signed the petition and if yes set the correct
-                        } else {
-                            res.render("login", {
-                                layout: "main",
-                                error: true,
-                                errorMessage:
-                                    "* We cannot find such an Email or Password, please try again *",
-                            });
-                        }
-                    })
-                    .catch((err) => console.log(err));
-              
+                console.log("here you go", rows)
+                if (rows.length === 0) {
+                    res.render("login", {
+                        layout: "main",
+                        error: true,
+                        errorMessage:
+                            "* We cannot find such an Email or Password, please try again *",
+                    });
+                }
+                    compare(req.body.password, rows[0].password_hash)
+                        .then((match) => {
+                            if (match) {
+                                req.session.user_id = rows[0].id;
+                                console.log(
+                                    "COOKIE USER ID",
+                                    req.session.user_id
+                                );
+                                db.getLoginSignature(rows[0].id)
+                                    .then(({ rows }) => {
+                                        console.log("LOGIN ROWS!", rows);
+                                        if (rows.length === 0) {
+                                            res.redirect("/petition");
+                                        } else {
+                                            console.log(rows[0].id);
+                                            req.session.signatureId =
+                                                rows[0].id;
+                                            console.log(
+                                                "COOKIE SIGNATURE ID",
+                                                req.session.signatureId
+                                            );
+                                            res.redirect("/thanks");
+                                        }
+                                    })
+                                    .catch((err) => console.log(err));
+                            }
+                        })
+                        .catch((err) => console.log(err));
             })
             .catch((err) => console.log(err));
     } else {
