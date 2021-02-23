@@ -26,9 +26,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-    res.render("registration", {
-        layout: "main",
-    });
+    if (req.session.user_id) {
+        res.redirect("/petition");
+    } else {
+       res.render("registration", {
+           layout: "main",
+       });
+    }
+    
 });
 
 app.post("/register", (req, res) => {
@@ -64,9 +69,13 @@ app.post("/register", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
+    if (req.session.user_id) {
+        res.redirect("/petition")
+    } else{
     res.render("login", {
         layout: "main",
     });
+}
 });
 
 app.post("/login", (req, res) => {
@@ -201,6 +210,15 @@ app.post("/thanks", (req, res) => {
 app.get("/signers", (req, res) => {
     db.getAllSigners()
         .then(({ rows }) => {
+            console.log("TITHAGINEI", rows)
+            for (let i = 0; i < rows.length; i++) {   
+                    if (
+                        !rows[i].homepage.includes("http://") &&
+                        !rows[i].homepage.includes("https://")
+                    ) { 
+                        rows[i].homepage = "javascript:;";
+                    }
+            }
             console.log("signers rows:", rows);
             res.render("signers", {
                 layout: "main",
@@ -274,6 +292,11 @@ app.get("/signers/:city", (req, res) => {
             });
         })
         .catch((err) => console.log(err));
+});
+
+app.get("/logout", (req, res) => {
+            req.session = null;
+            res.redirect("/")
 });
 
 const server = app.listen(process.env.PORT || 8080, () =>

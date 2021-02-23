@@ -1,9 +1,9 @@
 <div class="contPet">
     <a href="https://www.spiced-academy.com/" target="_blank"><img src="/Spiced.png" alt=""></a>
-    <h1>Spicedlings EDITION</h1>
+    <a id="spicedlings" href="/petition">Spicedlings EDITION</a>
 </div>
 {{#rows}}
-<form method='POST'> 
+<form id="editform" method='POST'> 
     <div class="edit">Edit Your Profile</div>
         <input type='text' name='firstname' placeholder='First Name' autocomplete='off' value="{{firstname}}">
         <p>NAME</p>
@@ -28,3 +28,5 @@
 {{/rows}}
         
 </form>
+
+<a id="logout" href="/logout">logout</a>
