@@ -55,6 +55,7 @@ form {
     flex-direction:column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .formBack {
@@ -133,13 +134,28 @@ canvas {
     height:100px;
 }
 
-.contPet h1 {
-color:white;
+#spicedlings {
+ color:white;
+ text-decoration: none;
  font-size: 40px;
  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  font-style: italic;
  font-weight: 100;
  margin: 0;
+}
+
+#spicedlings:hover {
+    color:yellow;
+    text-shadow: 0 0 5px crimson, 0 0 5px crimson, 0 0 5px crimson,
+        0 0 5px crimson;
+}
+
+#logout{
+    position:fixed;
+    right:10px;
+    bottom:0;
+    text-decoration: none;
+    color:white;
 }
 
 .contPetDesc p {
@@ -186,6 +202,7 @@ form p {
 #pain {
     text-decoration: none;
     color:white;
+    cursor:zoom-in;
 }
 
 #pain:hover {
@@ -210,9 +227,16 @@ form p {
 }
 
 .edit {
-    text-decoration: underline;
+    text-shadow: 0 0 5px crimson, 0 0 5px crimson, 0 0 5px crimson,
+        0 0 5px crimson;
+        color:black;
+    letter-spacing: 4px;
     font-size: 40px;
     margin: 20px;
+}
+
+#editform {
+    height:80vh;
 }
 
 #deleteSigButton {
@@ -237,7 +261,9 @@ form p {
 }
 
 #thanx {
-    font-size: 50px;
+    font-size: 45px;
+    margin:20px;
+    color:teal;
 }
 
 #signers {
@@ -245,15 +271,25 @@ form p {
 }
 
 #signers h1 {
+
+    font-size: 70px;
     text-align: center;
-    letter-spacing: 2px;
-    text-shadow: -1px 1px 0 crimson, 1px -1px 0 crimson, 1px 1px 0 crimson,
-        -1px -1px 0 crimson;
+    letter-spacing: 6px;
+    text-shadow: -1px 1px 5px yellow, 1px -1px 5px yellow, 1px 1px 5px yellow,
+        -1px -1px 5px yellow;
+        color:black;
 }
 
 #signers p {
-    color:chartreuse;
-    letter-spacing: 1px;
+    color:red;
+    letter-spacing: 2px;
+    font-size: 40px;
+    border-style: dotted;
+    border-color: white;
+    text-align:center;
+    font-family: monospace;
+    height:55px;
+    
 }
 
 #signers a {
