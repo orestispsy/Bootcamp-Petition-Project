@@ -194,10 +194,59 @@ app.get("/signers", (req, res) => {
             res.render("signers", {
                 layout: "main",
                 rows,
+                
             });
         })
         .catch((err) => console.log(err));
 });
+
+app.get("/profile/edit", (req, res) => {
+    db.getUserToEdit(req.session.user_id)
+        .then(({ rows }) => {
+            console.log("EDITING rows:", rows);
+            res.render("edit", {
+                layout: "main",
+                rows,
+            });
+        })
+        .catch((err) => console.log(err));
+});
+
+app.post("/profile/edit", (req, res) => {
+    db.getUserToEdit(req.session.user_id)
+        .then(({ rows }) => {
+            if (req.body.password){
+                hash(req.body.password).then((password_hash) => {
+                    db.updateUserLogin(
+                        req.body.firstname,
+                        req.body.lastname,
+                        req.body.email,
+                        password_hash,
+                        req.session.user_id
+                    )
+                        .then(({ rows }) => {
+                            res.redirect("/thanks");
+                        })
+                        .catch((err) => console.log(err));
+                });
+
+            } else {
+                console.log("UPDATE LOGIN rows:", rows);
+                db.updateUserLogin(
+                    req.body.firstname,
+                    req.body.lastname,
+                    req.body.email,
+                    rows[0].password_hash,
+                    req.session.user_id
+                ).then(({ rows }) => {
+                    res.redirect("/thanks");
+                });
+            } 
+        })
+        .catch((err) => console.log(err));
+});
+
+
 
 app.get("/signers/:city", (req, res) => {
     console.log("city :", req.params.city);

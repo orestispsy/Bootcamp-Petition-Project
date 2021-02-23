@@ -1,0 +1,30 @@
+<div class="contPet">
+    <a href="https://www.spiced-academy.com/" target="_blank"><img src="/Spiced.png" alt=""></a>
+    <h1>Spicedlings EDITION</h1>
+</div>
+{{#rows}}
+<form method='POST'> 
+    <div class="edit">Edit Your Profile</div>
+        <input type='text' name='firstname' placeholder='First Name' autocomplete='off' value="{{firstname}}">
+        <p>NAME</p>
+        <input type='text' name='lastname' placeholder='Last Name' autocomplete='off' value="{{lastname}}">
+        <p>LAST NAME</p>
+        <input type='text' name='email' placeholder='Email Address' autocomplete='off' value="{{email}}">
+        <p>EMAIL</p>
+        <input type='password' name='password' placeholder='Password' autocomplete='off'>
+        <p>PASSWORD</p>
+        <input type='text' name='age' placeholder='Age' autocomplete='off' value="{{age}}">
+        <p>AGE</p>
+        <input type='text' name='city' placeholder='City' autocomplete='off' value="{{city}}">
+        <p>CITY</p>
+        <input type='text' name='homepage' placeholder='Homepage' autocomplete='off' value="{{homepage}}">
+        <p>HOMEPAGE</p>
+      
+        <button> Update </button>  
+
+        {{#if error}}
+        <p class="formError">{{errorMessage}}</p>
+        {{/if}}
+{{/rows}}
+        
+</form>
