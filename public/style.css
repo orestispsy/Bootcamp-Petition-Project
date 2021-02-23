@@ -200,6 +200,12 @@ form p {
     color:chartreuse
 }
 
+.edit {
+    text-decoration: underline;
+    font-size: 40px;
+    margin: 20px;
+}
+
 footer {
     position: fixed;
     left:0;

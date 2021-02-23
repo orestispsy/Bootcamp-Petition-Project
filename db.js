@@ -89,3 +89,29 @@ module.exports.addUserProfile = (
     const params = [age, city, homepage, user_id];
     return db.query(q, params);
 };
+
+module.exports.getUserToEdit = (id) => {
+    const q = `
+        SELECT users.firstname, users.lastname, users.email, users.password_hash, user_profiles.age, user_profiles.city, user_profiles.homepage 
+    FROM users
+    JOIN signatures
+    ON users.id = signatures.user_id
+    LEFT JOIN user_profiles
+    ON users.id = user_profiles.user_id
+	WHERE users.id = $1
+    `;
+    const params = [id];
+    return db.query(q, params);
+};
+
+module.exports.updateUserLogin = (firstname, lastname, email, password_hash, id) => {
+    const q = `
+        INSERT INTO users (firstname, lastname, email, password_hash)
+VALUES ($1, $2, $3, $4)
+ON CONFLICT (email)
+DO UPDATE SET firstname = $1, lastname = $2, email = $3, password_hash = $4
+WHERE users.id = $5
+    `;
+    const params = [firstname, lastname, email, password_hash, id];
+    return db.query(q, params);
+};
