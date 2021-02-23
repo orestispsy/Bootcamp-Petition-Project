@@ -92,7 +92,7 @@ module.exports.addUserProfile = (
 
 module.exports.getUserToEdit = (id) => {
     const q = `
-        SELECT users.firstname, users.lastname, users.email, users.password_hash, user_profiles.age, user_profiles.city, user_profiles.homepage 
+        SELECT users.id, users.firstname, users.lastname, users.email, users.password_hash, user_profiles.age, user_profiles.city, user_profiles.homepage 
     FROM users
     JOIN signatures
     ON users.id = signatures.user_id
@@ -106,12 +106,26 @@ module.exports.getUserToEdit = (id) => {
 
 module.exports.updateUserLogin = (firstname, lastname, email, password_hash, id) => {
     const q = `
-        INSERT INTO users (firstname, lastname, email, password_hash)
-VALUES ($1, $2, $3, $4)
-ON CONFLICT (email)
-DO UPDATE SET firstname = $1, lastname = $2, email = $3, password_hash = $4
+        UPDATE users
+SET firstname = $1, lastname = $2, email = $3, password_hash = $4
 WHERE users.id = $5
     `;
     const params = [firstname, lastname, email, password_hash, id];
+    return db.query(q, params);
+};
+
+module.exports.updateUserProfile = (
+    age,
+    city,
+    homepage,
+    id
+) => {
+    const q = `
+        INSERT INTO user_profiles (age, city, homepage, user_id)
+        VALUES ($1, $2, $3, $4)
+    ON CONFLICT (user_id)
+    DO UPDATE SET age=$1, city = $2, homepage = $3
+    `;
+    const params = [age, city, homepage, id];
     return db.query(q, params);
 };
