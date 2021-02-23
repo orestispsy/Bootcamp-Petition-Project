@@ -129,3 +129,12 @@ module.exports.updateUserProfile = (
     const params = [age, city, homepage, id];
     return db.query(q, params);
 };
+
+module.exports.deleteSignature = (user_id) => {
+    const q = `
+        DELETE FROM signatures
+WHERE signatures.user_id = $1
+    `;
+    const params = [user_id];
+    return db.query(q, params);
+};

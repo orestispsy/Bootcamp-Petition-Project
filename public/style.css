@@ -85,8 +85,7 @@ button {
 button:hover {
     cursor: pointer;
     background-color:cyan;
-    color: white;
-    
+    color: white;  
 }
 
 canvas {
@@ -195,15 +194,76 @@ form p {
     transition:5s;
 }
 
-.signersLink {
+.signersLinks {
     text-decoration: none;
-    color:chartreuse
+    letter-spacing: 2px;
+    color:chartreuse;
+    text-shadow: -1px 1px 0 crimson, 1px -1px 0 crimson, 1px 1px 0 crimson,
+        -1px -1px 0 crimson;
+    margin:5px;
+}
+
+.signersLinks:hover {
+    color:crimson;
+    text-shadow: -1px 1px 0 chartreuse, 1px -1px 0 chartreuse, 1px 1px 0 chartreuse,
+        -1px -1px 0 chartreuse;
 }
 
 .edit {
     text-decoration: underline;
     font-size: 40px;
     margin: 20px;
+}
+
+#deleteSigButton {
+    margin-top: 10px;
+    font-family: fantasy;
+    font-size: 15px;
+    letter-spacing: 2px;
+    background-color: white;
+    color: crimson;
+    width:90px;
+    height:90px;
+    border-radius: 50%;
+    border-color: black;
+}
+
+#deleteSigButton:hover {
+    cursor: pointer;
+    background-color:lime;
+    color: crimson;
+    text-shadow: -1px 1px 0 black, 1px -1px 0 black, 1px 1px 0 black,
+        -1px -1px 0 black;
+}
+
+#thanx {
+    font-size: 50px;
+}
+
+#signers {
+    height:80vh;
+}
+
+#signers h1 {
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: -1px 1px 0 crimson, 1px -1px 0 crimson, 1px 1px 0 crimson,
+        -1px -1px 0 crimson;
+}
+
+#signers p {
+    color:chartreuse;
+    letter-spacing: 1px;
+}
+
+#signers a {
+    text-decoration: none;
+    color:white;
+    letter-spacing: 1px;
+}
+
+#signers a:hover {
+    color:yellow;
 }
 
 footer {

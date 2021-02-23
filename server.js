@@ -185,6 +185,19 @@ app.get("/thanks", (req, res) => {
         .catch((err) => console.log(err));
 });
 
+app.post("/thanks", (req, res) => {
+    
+            db.deleteSignature(req.session.user_id)
+                .then(() => {
+                    req.session.signatureId = null;
+                    console.log("DELETED SIGNATURE", req.session.signatureId);
+                    res.redirect("/petition");
+                })
+                .catch((err) => console.log(err));
+            
+      
+});
+
 app.get("/signers", (req, res) => {
     db.getAllSigners()
         .then(({ rows }) => {
@@ -196,6 +209,7 @@ app.get("/signers", (req, res) => {
         })
         .catch((err) => console.log(err));
 });
+
 
 app.get("/profile/edit", (req, res) => {
     db.getUserToEdit(req.session.user_id)
