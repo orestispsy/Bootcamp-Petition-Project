@@ -244,6 +244,9 @@ app.get("/signers", (req, res) => {
                 res.render("signers", {
                     layout: "main",
                     rows,
+                    number: rows.length,
+                    checkcity: false,
+                    check: true,
                 });
             })
             .catch((err) => console.log(err));
@@ -314,10 +317,14 @@ app.get("/signers/:city", (req, res) => {
         db.getAllSignersByCity(req.params.city)
             .then(({ rows }) => {
                 console.log("signers city rows:", rows);
+                console.log("length is:",rows.length)
                 res.render("signers", {
                     layout: "main",
                     rows,
                     city: req.params.city,
+                    checkcity: true,
+                    check: false,
+                    number:  rows.length
                 });
             })
             .catch((err) => console.log(err));
