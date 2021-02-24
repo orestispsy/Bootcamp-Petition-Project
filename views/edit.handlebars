@@ -19,7 +19,7 @@
         <p>CITY</p>
         <input type='text' name='homepage' placeholder='Homepage' autocomplete='off' value="{{homepage}}">
         <p>HOMEPAGE</p>
-      
+        <input type="hidden" name="_csrf" value="${{csrfToken}}">
         <button> Update </button>  
 
         {{#if error}}
