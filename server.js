@@ -238,6 +238,8 @@ app.get("/signers", (req, res) => {
                         !rows[i].homepage.includes("https://")
                     ) {
                         rows[i].homepage = "javascript:;";
+                    } else {
+                        rows[i].homepage = rows[i].homepage + ' " target="_blank"'
                     }
                 }
                 console.log("signers rows:", rows);
