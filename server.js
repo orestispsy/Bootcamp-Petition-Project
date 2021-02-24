@@ -326,6 +326,32 @@ app.get("/signers/:city", (req, res) => {
     }
 });
 
+app.get("/delete", (req, res) => {
+    
+    res.render("delete", {
+                    layout: "main",
+                  
+                });
+         
+});
+
+app.get("/delete/confirmed", (req, res) => {
+    db.deleteUserProfile(req.session.user_id)
+        .then(() => {
+            db.deleteSignature(req.session.user_id)
+                .then(() => {
+                    db.deleteUser(req.session.user_id)
+                        .then(() => {
+                           req.session = null;
+                           res.redirect("/");
+                        })
+                        .catch((err) => console.log(err));
+                })
+                .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
+});
+
 app.get("/logout", (req, res) => {
             req.session = null;
             res.redirect("/")

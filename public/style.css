@@ -61,7 +61,6 @@ form {
 .formBack {
     width:500px;
     height:500px;
-    background-color:red;
     background-image: url("paint.jpg");
     background-size: cover;
 }
@@ -151,9 +150,7 @@ canvas {
 }
 
 #logout{
-    position:fixed;
-    right:10px;
-    bottom:0;
+    align-self: flex-end;
     text-decoration: none;
     color:white;
 }
@@ -236,7 +233,7 @@ form p {
 }
 
 #editform {
-    height:80vh;
+    height:100vh;
 }
 
 #deleteSigButton {
@@ -263,7 +260,69 @@ form p {
 #thanx {
     font-size: 45px;
     margin:20px;
-    color:lime;
+    color:orangered;
+    text-shadow: -0 0 2px red, 0 -0 2px red, 0 0 2px red,
+        -0 -0 2px red;
+    letter-spacing: 2px;
+}
+
+#thanxCanvas {
+    background-image: url("canvasback2.jpg");
+    width:380px;
+    height:280px;
+    background-color:red;
+
+    background-size:cover;
+}
+
+#yourSignature {
+    width:220px;
+    height:160px;
+    margin-top: 60px;
+    margin-left: 80px;
+}
+
+#delete {
+    align-self: flex-end;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color:red;
+    font-family: monospace;
+  
+}
+
+#back {
+    align-self: flex-end;
+    text-decoration: none;
+    color:white;
+    margin:0;
+}
+
+#back:hover {
+    color:yellow;
+}
+
+#backDelete {
+    position:fixed;
+    bottom:0;
+    right:10px;
+    text-decoration: none;
+    color:white;
+    margin:0;
+}
+
+#backDelete:hover {
+    color:yellow;
+}
+
+#delConfirm {
+    text-decoration: none;
+    color: white;
+    margin:0;
+}
+
+#delConfirm:hover {
+    color:yellow;
 }
 
 #signers {
@@ -301,6 +360,7 @@ form p {
 #signers a:hover {
     color:yellow;
 }
+
 
 footer {
     position: fixed;

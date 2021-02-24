@@ -138,3 +138,23 @@ WHERE signatures.user_id = $1
     const params = [user_id];
     return db.query(q, params);
 };
+
+module.exports.deleteUserProfile = (user_id) => {
+    const q = `
+        DELETE FROM user_profiles
+WHERE user_profiles.user_id = $1
+    `;
+    const params = [user_id];
+    return db.query(q, params);
+};
+
+module.exports.deleteUser = (user_id) => {
+    const q = `
+        DELETE FROM users
+WHERE users.id = $1
+    `;
+    const params = [user_id];
+    return db.query(q, params);
+};
+
+
