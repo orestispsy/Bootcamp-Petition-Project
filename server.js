@@ -235,7 +235,7 @@ app.get("/signers", (req, res) => {
                         !rows[i].homepage.includes("http://") &&
                         !rows[i].homepage.includes("https://")
                     ) {
-                        rows[i].homepage = "javascript:;";
+                        rows[i].homepage = "#";
                     } else {
                         rows[i].homepage = rows[i].homepage + ' " target="_blank"'
                     }
