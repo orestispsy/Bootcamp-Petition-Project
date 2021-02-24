@@ -362,9 +362,10 @@ form p {
 }
 
 #login {
+    text-decoration: 0;
     position:fixed;
     bottom:0;
-    right:10;
+    right:10px;
 }
 
 
