@@ -12,8 +12,9 @@
 
 <a class="signersLinks" href="/signers">List of Signers</a>
 <a class="signersLinks" href="/profile/edit">EDIT YOUR PROFILE</a>
-<form method='POST'> 
-        <button id="deleteSigButton"> Delete Signature </button>         
+<form method='POST'>
+    <input type="hidden" name="_csrf" value="{{csrfToken}}"> 
+    <button id="deleteSigButton"> Delete Signature </button>         
 </form>
 
 <a id="logout" href="/logout">logout</a>

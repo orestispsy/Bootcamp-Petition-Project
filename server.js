@@ -6,7 +6,7 @@ const db = require("./db");
 const { hash, compare } = require("./utils/bc.js");
 
 const cookieSession = require("cookie-session");
-// const csurf = require("csurf");
+const csurf = require("csurf");
 
 app.use(
     cookieSession({
@@ -23,12 +23,12 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: false }));
 
 
-// app.use(csurf()); 
+app.use(csurf()); 
 
-// app.use(function(req, res, next) {
-//     res.locals.csrfToken = req.csrfToken();
-//     next();
-// });
+app.use(function(req, res, next) {
+    res.locals.csrfToken = req.csrfToken();
+    next();
+});
 
 
 app.get("/", (req, res) => {
