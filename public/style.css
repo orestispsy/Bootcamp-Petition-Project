@@ -361,6 +361,12 @@ form p {
     color:yellow;
 }
 
+#login {
+    position:fixed;
+    bottom:0;
+    right:10;
+}
+
 
 footer {
     position: fixed;
