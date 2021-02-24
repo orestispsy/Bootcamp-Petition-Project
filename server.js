@@ -161,7 +161,6 @@ app.post("/profile", (req, res) => {
 });
 
 app.get("/petition", (req, res) => {
-    console.log("TROUBLESHOOTING", req.session.signatureId)
     if (req.session.signatureId) {
         res.redirect("/thanks");
     } else {
