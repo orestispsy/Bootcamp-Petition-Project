@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const hb = require("express-handlebars");
 const db = require("./db");
+const secure = require("express-force-https"); //////
 
 const { hash, compare } = require("./utils/bc.js");
 
@@ -22,12 +23,16 @@ app.use(express.static(__dirname + "/public"));
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(secure);
+
 // app.use(csurf()); 
 
 // app.use(function(req, res, next) {
 //     res.locals.csrfToken = req.csrfToken();
 //     next();
 // });
+
+
 app.get("/", (req, res) => {
     res.redirect("/login");
 });
